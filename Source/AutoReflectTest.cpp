@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include <ReflectionTest.hpp>
-#include <ReflectionTest.generated.inl>
+#include <AutoReflectTest.hpp>
+#include <AutoReflectTest.generated.inl>
 
 template<typename T>
 void Log(T const& Val) {
