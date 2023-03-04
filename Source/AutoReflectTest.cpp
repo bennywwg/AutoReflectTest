@@ -1,6 +1,8 @@
 #include <iostream>
+#include <string>
 
 #include <AutoReflectTest.hpp>
+
 #include <AutoReflectTest.generated.inl>
 
 template<typename T>
@@ -17,5 +19,9 @@ int main(int argc, char** argv) {
     v.x = 1;
     v.y = 2;
     v.z = 3;
+
+    Person p3 { {}, 45, std::string("Robert") };
+    Log(p3);
+
     Log(v);
 }

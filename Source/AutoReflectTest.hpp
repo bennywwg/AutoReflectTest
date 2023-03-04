@@ -17,3 +17,9 @@ namespace ns {
         T z;
     };
 }
+
+class Person : public AutoReflect {
+public:
+    int Age;
+    std::string Name;
+};

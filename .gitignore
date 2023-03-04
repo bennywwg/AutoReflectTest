@@ -11,3 +11,5 @@ CTestTestfile.cmake
 _deps
 cache.txt
 AutoReflectTest
+.vscode
+Source/*.generated.inl
