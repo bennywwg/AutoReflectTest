@@ -1,0 +1,3 @@
+[submodule "AutoReflect"]
+	path = AutoReflect
+	url = https://github.com/bennywwg/AutoReflect
