@@ -1,25 +1,23 @@
 #pragma once
 
-#include <AutoReflect.hpp>
+namespace AutoReflect {
+    class A
+    {
+    public:
+        int Value;
+    };
 
-class A : public AutoReflect
-{
-public:
-    int Value;
-};
-
-namespace ns {
     template<typename T>
-    class Vec : public AutoReflect {
+    class Vec {
     public:
         T x;
         T y;
         T z;
     };
-}
 
-class Person : public AutoReflect {
-public:
-    int Age;
-    std::string Name;
-};
+    class Person {
+    public:
+        int Age;
+        std::string Name;
+    };
+}
