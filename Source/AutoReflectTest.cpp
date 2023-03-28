@@ -12,7 +12,12 @@ void Log(T const& Val) {
 
     SerializeFields(Ser, Val);
 
-    std::cout << Ser.Data << std::endl;
+    std::cout << Ser.Data;
+
+    if (!Ser.Binary.empty()) {
+		std::cout << " (with binary data of " << Ser.Binary.size() << " bytes)";
+	}
+    std::cout << std::endl;
 }
 
 template<typename T>
@@ -40,22 +45,17 @@ int main(int argc, char** argv) {
     //Log(v);
 
     Person p3 { 45, std::string("Robert") };
-    p3.AorVec = AutoReflect::A { 123 };
-    //Log(p3);
+    Log(p3);
 
     std::vector<Person> People;
     People.push_back(p3);
-    People.push_back(Person { 23, std::string("John") });
-    People.push_back(Person { 34, std::string("Jane") });
+    People.push_back(Person { 23, "John" });
+    People.push_back(Person { 34, "Jane" });
     Log(People);
 
     std::vector<Vec<int>> Vectors;
     Vectors.push_back(v);
     Vectors.push_back(Vec<int> { 4, 5, 6 });
     Vectors.push_back(Vec<int> { 7, 8, 9 });
-    //Log(Vectors);
-
-    std::string const Str = ToString(People);
-    std::vector<Person> People2 = FromString<std::vector<Person>>(Str);
-    Log(People2);
+    Log(Vectors);
 }
