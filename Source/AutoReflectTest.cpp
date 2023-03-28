@@ -15,12 +15,33 @@ void Log(T const& Val) {
     std::cout << Ser.Data << std::endl;
 }
 
+template<typename T>
+std::string ToString(T const& Val) {
+    Serializer Ser;
+
+    SerializeFields(Ser, Val);
+
+    return Ser.Data.dump();
+}
+
+template<typename T>
+T FromString(std::string const& Str) {
+    Deserializer Ser;
+    Ser.Data = nlohmann::json::parse(Str);
+
+    T Val;
+    DeserializeFields(Ser, Val);
+
+    return Val;
+}
+
 int main(int argc, char** argv) {
     Vec<int> v = { 1, 2, 3 };
-    Log(v);
+    //Log(v);
 
     Person p3 { 45, std::string("Robert") };
-    Log(p3);
+    p3.AorVec = AutoReflect::A { 123 };
+    //Log(p3);
 
     std::vector<Person> People;
     People.push_back(p3);
@@ -32,5 +53,9 @@ int main(int argc, char** argv) {
     Vectors.push_back(v);
     Vectors.push_back(Vec<int> { 4, 5, 6 });
     Vectors.push_back(Vec<int> { 7, 8, 9 });
-    Log(Vectors);
+    //Log(Vectors);
+
+    std::string const Str = ToString(People);
+    std::vector<Person> People2 = FromString<std::vector<Person>>(Str);
+    Log(People2);
 }

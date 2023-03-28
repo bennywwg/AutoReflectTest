@@ -1,5 +1,8 @@
 #pragma once
 
+#include <any>
+#include <string>
+
 namespace AutoReflect {
     class A
     {
@@ -19,5 +22,7 @@ namespace AutoReflect {
     public:
         int Age;
         std::string Name;
+
+        std::any AorVec;
     };
 }
