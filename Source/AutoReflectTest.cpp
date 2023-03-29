@@ -58,4 +58,10 @@ int main(int argc, char** argv) {
     Vectors.push_back(Vec<int> { 4, 5, 6 });
     Vectors.push_back(Vec<int> { 7, 8, 9 });
     Log(Vectors);
+    
+
+    A a;
+    a.Value = 123;
+    a.TheE = E::B;
+    Log(a);
 }
