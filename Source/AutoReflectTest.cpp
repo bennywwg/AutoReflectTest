@@ -2,7 +2,7 @@
 #include <string>
 
 #include <AutoReflectTest.hpp>
-#include <AutoReflectTest.generated.inl>
+#include <AutoReflectTest.cpp.gen.inl>
 
 using namespace AutoReflect;
 
@@ -41,8 +41,11 @@ T FromString(std::string const& Str) {
 }
 
 int main(int argc, char** argv) {
-    Vec<int> v = { 1, 2, 3 };
-    //Log(v);
+    Vec<int> v;
+    v.x = 1;
+    v.y = 2;
+    v.z = 3;
+    Log(v);
 
     Person p3 { 45, std::string("Robert") };
     Log(p3);
@@ -55,13 +58,11 @@ int main(int argc, char** argv) {
 
     std::vector<Vec<int>> Vectors;
     Vectors.push_back(v);
-    Vectors.push_back(Vec<int> { 4, 5, 6 });
-    Vectors.push_back(Vec<int> { 7, 8, 9 });
+    Vectors.push_back(Vec<int>(4, 5, 6 ));
+    Vectors.push_back(Vec<int>(7, 8, 9 ));
     Log(Vectors);
     
-
     A a;
     a.Value = 123;
-    a.TheE = E::B;
     Log(a);
 }

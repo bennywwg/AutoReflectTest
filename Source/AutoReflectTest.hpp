@@ -4,27 +4,10 @@
 #include <string>
 
 namespace AutoReflect {
-
-    enum class TheBlooper : long
-    {
-        A = 1,
-        B = 2,
-        C = 3
-    };
-
-
-    enum class E : int
-    {
-        A = 1,
-        B = 2,
-        C = 3
-    };
     class A
     {
     public:
         int Value;
-
-        E TheE = E::A;
     };
 
     template<typename T>
@@ -33,6 +16,9 @@ namespace AutoReflect {
         T x;
         T y;
         T z;
+
+        Vec() : x(0), y(0), z(0) { }
+        Vec(int X, int Y, int Z) : x(X), y(Y), z(Z) { }
     };
 
     class Person {
@@ -40,6 +26,6 @@ namespace AutoReflect {
         int Age;
         std::string Name;
 
-        std::any AorVec;
+        Vec<int> Position;
     };
 }

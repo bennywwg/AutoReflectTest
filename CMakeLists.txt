@@ -8,12 +8,13 @@ set(TEST_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source)
 
 set(TEST_SOURCES
     ${TEST_SOURCE_DIR}/AutoReflectTest.cpp
-    ${TEST_SOURCE_DIR}/AdditionalCpp.cpp
+    ${TEST_SOURCE_DIR}/ReflectionImpl.cpp
 )
 
 set(INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/Source
     ${PROJECT_SOURCE_DIR}/AutoReflect/Include
+    ${PROJECT_SOURCE_DIR}/AutoReflect/glm/
     ${PROJECT_SOURCE_DIR}/AutoReflect/json/include/
 )
 
@@ -23,7 +24,7 @@ foreach(INCLUDE_DIR ${INCLUDE_DIRS})
 endforeach()
 
 add_subdirectory(AutoReflect)
-add_custom_target(GenerateReflection COMMAND AutoReflect -S ${TEST_SOURCES} ${REFLECTION_INCLUDES})
+add_custom_target(GenerateReflection COMMAND AutoReflect -S -M ${PROJECT_SOURCE_DIR}/Source/ReflectionImpl.cpp ${TEST_SOURCES} ${REFLECTION_INCLUDES})
 
 add_executable(AutoReflectTest
     ${TEST_SOURCE_DIR}/AutoReflectTest.hpp
